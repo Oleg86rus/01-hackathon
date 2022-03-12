@@ -25,9 +25,7 @@ export class CustomText extends Module {
                 const getPost = async () => {   
                     try {
                         const generatePost = await fetch(`${POSTS_URL}/${UTILS.random(1, 11)}`)
-                        console.log(`generatePost`, generatePost)
                         const result = await generatePost.json()
-                        console.log('result', result)
                         const postHTML = createPostItem(result.text)
                     } catch (err) {
                         console.error(err)
