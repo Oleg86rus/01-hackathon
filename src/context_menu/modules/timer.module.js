@@ -3,6 +3,7 @@ import { Module } from '../../core/module';
 export class TimerModule extends Module {
     constructor(type, text) {
         super(type, text);
+        this.totalTime = 0;
     }
 
     toHTML() {
@@ -10,7 +11,7 @@ export class TimerModule extends Module {
     }
     trigger() {
         return new Promise(() => {
-            let time;
+           // let time;
             const menuTimer = document.querySelector("[data-type = 'timer']");
             menuTimer.addEventListener('click', () => {
                 const title = document.createElement('h1');
@@ -18,36 +19,39 @@ export class TimerModule extends Module {
                 document.body.appendChild(title);
 
                 // Запуск инпут
-                time = this.timeInput();
-                console.log('time', time);
-                let filledTimeInput = document.querySelector('#timeCount');
-                filledTimeInput.remove;
+                this.timeInput();
+               // this.totalTime = this.timeInput();
+                console.log('time', this.totalTime);
+
 
                 // Создание блока времени отсчета
                 const timeCount = document.createElement('div');
-                timeCount.textContent = `До завершения таймера осталось ${time} сек`;
-                document.body.appendChild(timeCount);
-
+                timeCount.textContent = `До завершения таймера осталось ${this.totalTime} сек`;
+                document.body.append(timeCount);
+                console.log('time', this.totalTime);
                 // Таймер отсчета используя декремент (--) с шагом в 1000 мс
                 setInterval(() => {
-                    timeCount.textContent = `До завершения таймера осталось ${--time} сек`;
+                    timeCount.textContent = `До завершения таймера осталось ${--this.totalTime} сек`;
                 }, 1000);
 
                 // Удаление таймера
                 setTimeout(() => {
                     document.body.removeChild(timeCount);
-                }, time * 1000);
+                }, this.totalTime * 1000);
             });
         });
     }
 
     timeInput() {
+        console.log('123123')
         let isTimeInputDisplays = document.querySelector('#timeCount');
-        let totalTime;
+        //let totalTime;
         if (isTimeInputDisplays === null) {
+            console.log('123123')
+
             const timeCount = document.createElement('div');
             timeCount.id = 'timeCount';
-            document.body.appendChild(timeCount);
+            document.body.append(timeCount);
 
             // Дни
             const daysSection = document.createElement('div');
@@ -127,22 +131,24 @@ export class TimerModule extends Module {
 
             // Подсчет секунд
             const submitStart = document.querySelector('#startButton');
-            let sum;
+            //let sum;
             submitStart.addEventListener('click', () => {
                 let d = parseInt(document.querySelector('#days').value, 0);
                 let h = parseInt(document.querySelector('#hours').value, 0);
                 let m = parseInt(document.querySelector('#minutes').value, 0);
                 let s = parseInt(document.querySelector('#seconds').value, 0);
-                sum = d * 86400 + h * 3600 + m * 60 + s;
-                if (sum <= 0) {
+                this.totalTime = d * 86400 + h * 3600 + m * 60 + s;
+                if (this.totalTime <= 0) {
                     alert(
                         'Введите корректные данные. Количество должно быть больше 0'
                     );
                 } else {
-                    totalTime = sum;
-                    console.log('totalTime', totalTime);
-                    return totalTime;
+                    //totalTime = sum;
+                    console.log('totalTime', this.totalTime);
+                    //return totalTime;
                 }
+                let filledTimeInput = document.querySelector('#timeCount');
+                filledTimeInput.remove();
             });
         } else {
             alert(
@@ -150,5 +156,5 @@ export class TimerModule extends Module {
             );
             isTimeInputDisplays.remove();
         }
-    }
+   }
 }
