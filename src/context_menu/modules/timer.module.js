@@ -109,9 +109,7 @@ export class TimerModule extends Module {
                 let s = parseInt(document.querySelector('#seconds').value, 0);
                 this.totalTime = d * 86400 + h * 3600 + m * 60 + s;
                 if (this.totalTime <= 0) {
-                    alert(
-                        'Введите корректные данные. Количество должно быть больше 0'
-                    );
+                    this.timeInput().call()
                 } else {
                     console.log('totalTime', this.totalTime);
                 }
@@ -120,10 +118,8 @@ export class TimerModule extends Module {
                 this.startTimer();
             });
         } else {
-            alert(
-                'Таймер отсчёта уже был запущен и текущий будет удален. Перезапустите таймер отсчёта снова.'
-            );
             isTimeInputDisplays.remove();
+            this.timeInput().call()
         }
     }
 

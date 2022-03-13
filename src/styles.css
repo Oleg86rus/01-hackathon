@@ -44,7 +44,7 @@ body {
 
 .modalItem {
     text-align: center;
-    margin-left: 100px;
+    margin-left: 50px;
     width: 511px;
     height: 511px;
     background: #4ba7ef;
@@ -92,7 +92,6 @@ body {
 }
 .card {
     width: 400px;
-    height: 170px;
     background: #4ba7ef;
     padding: 20px;
     margin-bottom: 20px;
@@ -104,11 +103,9 @@ body {
     margin-bottom: 10px;
 }
 
-
 .description p {
     font-size: 15px;
 }
-
 
 .authors li {
     font-style: italic;
@@ -128,4 +125,141 @@ body {
     border-radius: 20px;
     border: none;
     box-shadow: 0 0 5px 2px #ff5900;
+}
+.timeCount {
+    margin-bottom: 10px;
+}
+#timeCount h1 {
+    margin-bottom: 10px;
+}
+#timeCount {
+    margin-left: 50px;
+}
+#timeCount div {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 350px;
+    width: 100%;
+}
+
+#timeCount label {
+    margin-right: 15px;
+}
+
+#timeCount input {
+    padding: 10px;
+    border: 2px solid #4ba7ef;
+    border-radius: 5px;
+}
+
+#startButton {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #4ba7ef;
+    border: 2px solid #4ba7ef;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #fff;
+    transition: all 0.5s;
+    /*cursor: url("./assets/cursor.cur"), pointer;*/
+}
+
+#startButton:hover {
+    background-color: transparent;
+    color: #4ba7ef;
+}
+
+.timeCount {
+    background-color: #4ba7ef;
+    text-align: center;
+    font-size: 24px;
+    width: 350px;
+    height: 120px;
+    margin-left: 50px;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+.wizards {
+    padding: 50px;
+    text-align: center;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.wizards__title {
+    font-size: 30px;
+}
+
+.wizards__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 300px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.wizards__item {
+    width: 250px;
+    position: relative;
+    height: 100%;
+}
+
+.wizards__health {
+    display: block;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+
+.wizards__name {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.wizards__ball {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    top: 40%;
+    z-index: 9999;
+}
+
+.wizards__img {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    object-fit: cover;
+    top: 50%;
+    transform: translate(0, -50%);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.wizards__ball--left {
+    opacity: 0;
+    transition: all 0.5s;
+    background-color: red;
+    right: 10px;
+    box-shadow: 0 0 10px 10px rgba(255, 0, 0, 0.8);
+}
+
+.wizards__ball--right {
+    opacity: 0;
+    transition: all 0.5s;
+    background-color: blue;
+    left: 10px;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 255, 0.8);
 }
