@@ -13,8 +13,15 @@ export class TimerModule extends Module {
             let time;
             const menuTimer = document.querySelector("[data-type = 'timer']");
             menuTimer.addEventListener('click', () => {
-                time = this.getTime();
-                console.log(time);
+                const title = document.createElement('h1');
+                title.textContent = 'Отсчёт времени';
+                document.body.appendChild(title);
+
+                // Запуск инпут
+                time = this.timeInput();
+                console.log('time', time);
+                let filledTimeInput = document.querySelector('#timeCount');
+                filledTimeInput.remove;
 
                 // Создание блока времени отсчета
                 const timeCount = document.createElement('div');
@@ -26,7 +33,7 @@ export class TimerModule extends Module {
                     timeCount.textContent = `До завершения таймера осталось ${--time} сек`;
                 }, 1000);
 
-                // Удаление таймера и вывод сообщения об окончании
+                // Удаление таймера
                 setTimeout(() => {
                     document.body.removeChild(timeCount);
                 }, time * 1000);
@@ -34,14 +41,114 @@ export class TimerModule extends Module {
         });
     }
 
-    // Получение времени от пользователя и проверка на валидность
-    getTime() {
-        let userTime = +prompt('Укажите время в секундах');
-        if (isNaN(userTime)) {
-            alert('Введите корректное число');
-            this.getTime();
+    timeInput() {
+        let isTimeInputDisplays = document.querySelector('#timeCount');
+        let totalTime;
+        if (isTimeInputDisplays === null) {
+            const timeCount = document.createElement('div');
+            timeCount.id = 'timeCount';
+            document.body.appendChild(timeCount);
+
+            // Дни
+            const daysSection = document.createElement('div');
+            timeCount.append(daysSection);
+
+            const labelDays = document.createElement('label');
+            labelDays.textContent = 'Количество дней';
+            daysSection.append(labelDays);
+
+            const days = document.createElement('input');
+            days.id = 'days';
+            days.type = 'number';
+            days.value = '0';
+            days.min = '0';
+
+            // Попытка разработать валидацию на input
+            // days.pattern = '^[1-9]+[0-9]*$';
+            // days.oninput = "validity.valid||(value='')";
+            // days.onpaste = 'return false';
+            // days.ondrop = 'return false';
+            // days.autocomplete = 'off';
+            daysSection.append(days);
+
+            // Часы
+            const hoursSection = document.createElement('div');
+            timeCount.append(hoursSection);
+
+            const labelHours = document.createElement('label');
+            labelHours.textContent = 'Количество часов';
+            hoursSection.append(labelHours);
+
+            const hours = document.createElement('input');
+            hours.id = 'hours';
+            hours.type = 'number';
+            hours.value = '0';
+            hours.min = '0';
+            hoursSection.append(hours);
+
+            // Минуты
+            const minutesSection = document.createElement('div');
+            timeCount.append(minutesSection);
+
+            const labelMinutes = document.createElement('label');
+            labelMinutes.textContent = 'Количество минут';
+            minutesSection.append(labelMinutes);
+
+            const minutes = document.createElement('input');
+            minutes.id = 'minutes';
+            minutes.type = 'number';
+            minutes.value = '0';
+            minutes.min = '0';
+            minutesSection.append(minutes);
+
+            // Секунды
+            const secondsSection = document.createElement('div');
+            timeCount.append(secondsSection);
+
+            const labelSeconds = document.createElement('label');
+            labelSeconds.textContent = 'Количество секунд';
+            secondsSection.append(labelSeconds);
+
+            const seconds = document.createElement('input');
+            seconds.id = 'seconds';
+            seconds.type = 'number';
+            seconds.value = '0';
+            seconds.min = '0';
+            secondsSection.append(seconds);
+
+            // Запуск таймера
+            const startButtonSection = document.createElement('div');
+            timeCount.append(startButtonSection);
+
+            const startButton = document.createElement('button');
+            startButton.id = 'startButton';
+            startButton.textContent = 'Начать отсчёт';
+            startButtonSection.append(startButton);
+
+            // Подсчет секунд
+            const submitStart = document.querySelector('#startButton');
+            let sum;
+            submitStart.addEventListener('click', () => {
+                let d = parseInt(document.querySelector('#days').value, 0);
+                let h = parseInt(document.querySelector('#hours').value, 0);
+                let m = parseInt(document.querySelector('#minutes').value, 0);
+                let s = parseInt(document.querySelector('#seconds').value, 0);
+                sum = d * 86400 + h * 3600 + m * 60 + s;
+                if (sum <= 0) {
+                    alert(
+                        'Введите корректные данные. Количество должно быть больше 0'
+                    );
+                } else {
+                    totalTime = sum;
+                    console.log('totalTime', totalTime);
+                    return totalTime;
+                }
+            });
         } else {
-            return userTime;
+            alert(
+                'Таймер отсчёта уже был запущен и текущий будет удален. Перезапустите таймер отсчёта снова.'
+            );
+            isTimeInputDisplays.remove();
         }
     }
 }
