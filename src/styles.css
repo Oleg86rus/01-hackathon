@@ -69,6 +69,11 @@ body {
     100% {transform: translateY(0);}
 }
 
+.message-box {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
 .blockItem {
     width: 300px;
     padding: 15px;
