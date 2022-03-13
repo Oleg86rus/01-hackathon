@@ -130,3 +130,85 @@ body {
     border: none;
     box-shadow: 0 0 5px 2px #ff5900;
 }
+
+.wizards {
+    margin-top: 30px;
+    /*height: 440px;*/
+    text-align: center;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.wizards__title {
+    font-size: 30px;
+}
+
+.wizards__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 300px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.wizards__item {
+    width: 250px;
+    position: relative;
+    height: 100%;
+}
+
+.wizards__health {
+    display: block;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+
+.wizards__name {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.wizards__ball {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    top: 40%;
+    z-index: 9999;
+}
+
+.wizards__img {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    object-fit: cover;
+    top: 50%;
+    transform: translate(0, -50%);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.wizards__ball--left {
+    opacity: 0;
+    transition: all 0.5s;
+    background-color: red;
+    right: 10px;
+    box-shadow: 0 0 10px 10px rgba(255, 0, 0, 0.8);
+}
+
+.wizards__ball--right {
+    opacity: 0;
+    transition: all 0.5s;
+    background-color: blue;
+    left: 10px;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 255, 0.8);
+}
