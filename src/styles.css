@@ -45,6 +45,7 @@ body {
 .modalItem {
     text-align: center;
     margin-left: 50px;
+    margin-bottom: 10px;
     width: 511px;
     height: 511px;
     background: #4ba7ef;
