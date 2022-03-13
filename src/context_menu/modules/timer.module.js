@@ -9,6 +9,7 @@ export class TimerModule extends Module {
     toHTML() {
         return super.toHTML();
     }
+
     trigger() {
         const menuTimer = document.querySelector("[data-type = 'timer']");
         menuTimer.addEventListener('click', () => {
@@ -109,7 +110,7 @@ export class TimerModule extends Module {
                 let s = parseInt(document.querySelector('#seconds').value, 0);
                 this.totalTime = d * 86400 + h * 3600 + m * 60 + s;
                 if (this.totalTime <= 0) {
-                    this.timeInput().call()
+                    this.timeInput().call();
                 } else {
                     console.log('totalTime', this.totalTime);
                 }
@@ -119,18 +120,18 @@ export class TimerModule extends Module {
             });
         } else {
             isTimeInputDisplays.remove();
-            this.timeInput().call()
+            this.timeInput().call();
         }
     }
 
     startTimer() {
-        let time = this.totalTime
+        let time = this.totalTime;
         console.log('Total time', this.totalTime);
 
         // Создание блока времени отсчета
         const timeCount = document.createElement('div');
-        timeCount.classList = 'timeCount'
-        const cardForContextMenu = document.querySelector('.cardForContextMenu')
+        timeCount.classList = 'timeCount';
+        const cardForContextMenu = document.querySelector('.cardForContextMenu');
         timeCount.textContent = `До завершения таймера осталось ${time} сек`;
         cardForContextMenu.append(timeCount);
 
@@ -140,14 +141,13 @@ export class TimerModule extends Module {
            if (time === 0) {
                clearInterval(timer);
                setTimeout(() => {
-                   timeCount.remove()
+                   timeCount.remove();
                }, 2000);
            } else {
                time -= 1;
-               console.log(time)
+               console.log(time);
                timeCount.textContent = `До завершения таймера осталось ${time} сек`;
            }
        }, 1000);
     }
-
 }

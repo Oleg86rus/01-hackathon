@@ -15,7 +15,7 @@ export class ClicksModule extends Module {
     trigger() {
         const clickModalItem = document.querySelector("[data-type = 'clickModule']");
         clickModalItem.addEventListener('click', (event) => {
-            event.preventDefault()
+            event.preventDefault();
             const modals = document.querySelectorAll('.modalItem');
             this.time = 10;
             this.clickCounter = 0;
@@ -60,7 +60,7 @@ export class ClicksModule extends Module {
 
     setCount () {
         const count = document.querySelector('#count');
-        count.innerHTML = `<br><br>Количество одинарных кликов: ${this.clickCounter}<br>Количество двойных кликов: ${this.dblClickCounter}`
+        count.innerHTML = `<br><br>Количество одинарных кликов: ${this.clickCounter}<br>Количество двойных кликов: ${this.dblClickCounter}`;
     }
 
     startTimerForRemoveModal () {
@@ -90,7 +90,7 @@ export class ClicksModule extends Module {
         const modal = document.createElement('div');
         modal.className = 'modalItem';
         const titleInModal = document.createElement('div');
-        titleInModal.id = 'titleInModal'
+        titleInModal.id = 'titleInModal';
         const titleInModalH1 = document.createElement('h1');
         titleInModalH1.innerHTML = `${title}<br>Осталось <strong><span id="timer">10</span></strong> секунд(ы)<br><span id="count"></span>`;
         titleInModal.appendChild(titleInModalH1);

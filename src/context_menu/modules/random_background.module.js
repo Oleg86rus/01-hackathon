@@ -5,9 +5,11 @@ export class RandomBackgroundModule extends Module {
     constructor(type, text) {
         super(type, text);
     }
+
     toHTML() {
         return super.toHTML();
     }
+
     trigger() {
        const menuList = document.querySelector("[data-type = 'randomBackground']");
        menuList.addEventListener('click', () => {

@@ -12,20 +12,20 @@ export class WizardModule extends Module {
     trigger() {
         const soundModule = document.querySelector("[data-type = 'wizardModule']");
         soundModule.addEventListener('click', () => {
-            const wizard = document.querySelector('.wizards')
+            const wizard = document.querySelector('.wizards');
             if(wizard) {
-                wizard.remove()
-                this.createElement()
+                wizard.remove();
+                this.createElement();
             } else {
-                this.createElement()
+                this.createElement();
             }
         })
     }
 
     createElement() {
-        const wizardsInner = document.createElement('div')
+        const wizardsInner = document.createElement('div');
 
-        wizardsInner.classList = 'wizards'
+        wizardsInner.classList = 'wizards';
         wizardsInner.innerHTML = `
         <div class="wizards">
           <div class="wizards__title">Можно нанести удар</div>
@@ -45,105 +45,104 @@ export class WizardModule extends Module {
           </div>
         </div>
         `
-        document.body.append(wizardsInner)
-        this.strike()
+        document.body.append(wizardsInner);
+        this.strike();
     }
 
     strike () {
-        const wizards = document.querySelector('.wizards')
-        const wizardImgLeft = document.querySelector('.wizards__img--left')
-        const wizardWrapper = document.querySelector('.wizards__inner')
-        const wizardImgRight = document.querySelector('.wizards__img--right')
-        const wizardBallLeft = document.querySelector('.wizards__ball--left')
-        const wizardBallRight = document.querySelector('.wizards__ball--right')
-        const wizardHealthLeft = document.querySelector('.wizards__health--left')
-        const wizardHealthRight = document.querySelector('.wizards__health--right')
-        const wizardTitle = document.querySelector('.wizards__title')
-        let healthLeft = 100
-        let healthRight = 100
+        const wizards = document.querySelector('.wizards');
+        const wizardImgLeft = document.querySelector('.wizards__img--left');
+        const wizardWrapper = document.querySelector('.wizards__inner');
+        const wizardImgRight = document.querySelector('.wizards__img--right');
+        const wizardBallLeft = document.querySelector('.wizards__ball--left');
+        const wizardBallRight = document.querySelector('.wizards__ball--right');
+        const wizardHealthLeft = document.querySelector('.wizards__health--left');
+        const wizardHealthRight = document.querySelector('.wizards__health--right');
+        const wizardTitle = document.querySelector('.wizards__title');
+        let healthLeft = 100;
+        let healthRight = 100;
 
-        wizardHealthLeft.innerText = healthLeft
-        wizardHealthRight.innerText = healthRight
+        wizardHealthLeft.innerText = healthLeft;
+        wizardHealthRight.innerText = healthRight;
 
 
         wizardImgLeft.addEventListener('click', () => {
-            wizardBallLeft.style.opacity = '1'
-            wizardTitle.style.opacity = '0'
+            wizardBallLeft.style.opacity = '1';
+            wizardTitle.style.opacity = '0';
             setTimeout(()=> {
-                wizardBallLeft.style.right = '-150%'
+                wizardBallLeft.style.right = '-150%';
             },500)
             setTimeout(()=> {
-                wizardBallLeft.style.transform = 'scale(2)'
-                wizardImgRight.style.transform = 'translate(10px, -50%)'
+                wizardBallLeft.style.transform = 'scale(2)';
+                wizardImgRight.style.transform = 'translate(10px, -50%)';
             },1000)
 
             setTimeout(()=> {
-                wizardBallLeft.style.transition = 'none'
-                wizardBallLeft.style.opacity = '0'
-                wizardBallLeft.style.right = '10px'
-                wizardBallLeft.style.transform = 'scale(1)'
+                wizardBallLeft.style.transition = 'none';
+                wizardBallLeft.style.opacity = '0';
+                wizardBallLeft.style.right = '10px';
+                wizardBallLeft.style.transform = 'scale(1)';
 
             },1500)
                 setTimeout(()=> {
-                    wizardBallLeft.style.transition = 'all 0.5s'
+                    wizardBallLeft.style.transition = 'all 0.5s';
                 },1700)
             setTimeout(()=> {
-                wizardTitle.style.opacity = '1'
-                healthRight -= 50
-                wizardHealthRight.innerText = healthRight
-                wizardImgRight.style.transform = 'translate(0, -50%)'
+                wizardTitle.style.opacity = '1';
+                healthRight -= 50;
+                wizardHealthRight.innerText = healthRight;
+                wizardImgRight.style.transform = 'translate(0, -50%)';
                 if (healthLeft <= 0 || healthRight <= 0 ) {
-                    wizardTitle.innerText = 'Игра окончена! Победил красный маг'
-                    wizardTitle.style.textShadow = '0 0 0.5em red'
-                    wizardWrapper.remove()
+                    wizardTitle.innerText = 'Игра окончена! Победил красный маг';
+                    wizardTitle.style.textShadow = '0 0 0.5em red';
+                    wizardWrapper.remove();
                     setTimeout(()=> {
-                        wizards.remove()
+                        wizards.remove();
                     },1000)
                 }
             },2000)
         })
 
         wizardImgRight.addEventListener('click', () => {
-            wizardTitle.style.opacity = '0'
-            wizardBallRight.style.opacity = '1'
-            setTimeout(()=> {
-                wizardBallRight.style.left = '-150%'
-            },500)
-            setTimeout(()=> {
-                wizardBallRight.style.transform = 'scale(2)'
-                wizardImgLeft.style.transform = 'translate(-10px, -50%)'
+            wizardTitle.style.opacity = '0';
+            wizardBallRight.style.opacity = '1';
 
+            setTimeout(()=> {
+                wizardBallRight.style.left = '-150%';
+            },500)
+
+            setTimeout(()=> {
+                wizardBallRight.style.transform = 'scale(2)';
+                wizardImgLeft.style.transform = 'translate(-10px, -50%)';
             },1000)
 
             setTimeout(()=> {
-                wizardBallRight.style.transition = 'none'
-                wizardBallRight.style.opacity = '0'
-                wizardBallRight.style.left = '10px'
-                wizardBallRight.style.transform = 'scale(1)'
-
-
+                wizardBallRight.style.transition = 'none';
+                wizardBallRight.style.opacity = '0';
+                wizardBallRight.style.left = '10px';
+                wizardBallRight.style.transform = 'scale(1)';
             },1500)
 
             setTimeout(()=> {
-                wizardBallRight.style.transition = 'all 0.5s'
-
+                wizardBallRight.style.transition = 'all 0.5s';
             },1700)
 
             setTimeout(()=> {
-                wizardTitle.style.opacity = '1'
-                healthLeft -= 50
-                wizardHealthLeft.innerText = healthLeft
-                wizardImgLeft.style.transform = 'translate(0, -50%)'
+                wizardTitle.style.opacity = '1';
+                healthLeft -= 50;
+                wizardHealthLeft.innerText = healthLeft;
+                wizardImgLeft.style.transform = 'translate(0, -50%)';
+
                 if (healthLeft <= 0 || healthRight <= 0 ) {
-                    wizardTitle.innerText = 'Игра окончена! Победил синий маг'
-                    wizardTitle.style.textShadow = '0 0 0.5em blue'
-                    wizardWrapper.remove()
+                    wizardTitle.innerText = 'Игра окончена! Победил синий маг';
+                    wizardTitle.style.textShadow = '0 0 0.5em blue';
+                    wizardWrapper.remove();
+
                     setTimeout(()=> {
-                        wizards.remove()
+                        wizards.remove();
                     },1000)
                 }
             },2000)
         })
-
     }
 }

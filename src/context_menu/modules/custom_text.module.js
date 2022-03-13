@@ -22,7 +22,7 @@ export class CustomText extends Module {
                 messageBox.append(blockItem);
                 blockItem.innerText = text;
                 setTimeout(function(){
-                    blockItem.remove()
+                    blockItem.remove();
                 }, UTILS.random(3000, 8000))
             }
             const getPost = async () => {
