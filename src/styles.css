@@ -125,6 +125,7 @@ body {
     border-radius: 20px;
     border: none;
     box-shadow: 0 0 5px 2px #ff5900;
+    cursor: url("./assets/cursor.cur"), pointer;
 }
 .timeCount {
     margin-bottom: 10px;
@@ -163,7 +164,7 @@ body {
     font-size: 20px;
     color: #fff;
     transition: all 0.5s;
-    /*cursor: url("./assets/cursor.cur"), pointer;*/
+    cursor: url("./assets/cursor.cur"), pointer;
 }
 
 #startButton:hover {
@@ -244,7 +245,7 @@ body {
     object-fit: cover;
     top: 50%;
     transform: translate(0, -50%);
-    cursor: pointer;
+    cursor: url("./assets/cursor.cur"), pointer;
     transition: transform 0.3s;
 }
 
