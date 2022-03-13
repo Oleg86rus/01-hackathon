@@ -11,47 +11,26 @@ export class TimerModule extends Module {
     }
     trigger() {
         return new Promise(() => {
-           // let time;
             const menuTimer = document.querySelector("[data-type = 'timer']");
             menuTimer.addEventListener('click', () => {
-                const title = document.createElement('h1');
-                title.textContent = 'Отсчёт времени';
-                document.body.appendChild(title);
-
                 // Запуск инпут
                 this.timeInput();
-               // this.totalTime = this.timeInput();
-                console.log('time', this.totalTime);
-
-
-                // Создание блока времени отсчета
-                const timeCount = document.createElement('div');
-                timeCount.textContent = `До завершения таймера осталось ${this.totalTime} сек`;
-                document.body.append(timeCount);
-                console.log('time', this.totalTime);
-                // Таймер отсчета используя декремент (--) с шагом в 1000 мс
-                setInterval(() => {
-                    timeCount.textContent = `До завершения таймера осталось ${--this.totalTime} сек`;
-                }, 1000);
-
-                // Удаление таймера
-                setTimeout(() => {
-                    document.body.removeChild(timeCount);
-                }, this.totalTime * 1000);
             });
         });
     }
 
     timeInput() {
-        console.log('123123')
+        console.log('123123');
         let isTimeInputDisplays = document.querySelector('#timeCount');
-        //let totalTime;
         if (isTimeInputDisplays === null) {
-            console.log('123123')
-
+            // Label
             const timeCount = document.createElement('div');
             timeCount.id = 'timeCount';
             document.body.append(timeCount);
+
+            const title = document.createElement('h1');
+            title.textContent = 'Отсчёт времени';
+            timeCount.append(title);
 
             // Дни
             const daysSection = document.createElement('div');
@@ -131,7 +110,6 @@ export class TimerModule extends Module {
 
             // Подсчет секунд
             const submitStart = document.querySelector('#startButton');
-            //let sum;
             submitStart.addEventListener('click', () => {
                 let d = parseInt(document.querySelector('#days').value, 0);
                 let h = parseInt(document.querySelector('#hours').value, 0);
@@ -143,12 +121,11 @@ export class TimerModule extends Module {
                         'Введите корректные данные. Количество должно быть больше 0'
                     );
                 } else {
-                    //totalTime = sum;
                     console.log('totalTime', this.totalTime);
-                    //return totalTime;
                 }
                 let filledTimeInput = document.querySelector('#timeCount');
                 filledTimeInput.remove();
+                this.startTimer();
             });
         } else {
             alert(
@@ -156,5 +133,25 @@ export class TimerModule extends Module {
             );
             isTimeInputDisplays.remove();
         }
-   }
+    }
+
+    startTimer() {
+        console.log('Total time', this.totalTime);
+
+        // Создание блока времени отсчета
+        const timeCount = document.createElement('div');
+        timeCount.textContent = `До завершения таймера осталось ${this.totalTime} сек`;
+        document.body.append(timeCount);
+
+        // Таймер отсчета используя декремент (--) с шагом в 1000 мс
+        setInterval(() => {
+            timeCount.textContent = `До завершения таймера осталось ${--this
+                .totalTime} сек`;
+        }, 1000);
+
+        // Удаление таймера
+        setTimeout(() => {
+            document.body.removeChild(timeCount);
+        }, this.totalTime * 1000);
+    }
 }
