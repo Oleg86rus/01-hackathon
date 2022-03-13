@@ -11,7 +11,7 @@ const shapeModule =  new ShapeModule('shapeModule', 'Случайная фигу
 const changeBackground = new RandomBackgroundModule('randomBackground', 'Случайный фон');
 const clickModule = new ClicksModule('clickModule', 'Аналитика кликов');
 const customText = new CustomText('customText', 'Кастомное сообщение');
-const timerModule = new TimerModule('timer', 'Таймер отчёта');
+const timerModule = new TimerModule('timer', 'Таймер отсчёта');
 const randomSound = new RandomSound('randomSound', 'Случайный звук');
 const wizardModule = new WizardModule('wizardModule', 'Битва магов');
 
