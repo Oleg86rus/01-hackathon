@@ -53,11 +53,11 @@ export class ContextMenu extends Menu {
         })
     }
     trigger() {
-        shapeModule.trigger();
-        changeBackground.trigger();
-        clickModule.trigger();
-        customText.trigger();
+        // shapeModule.trigger();
+        // changeBackground.trigger();
+        // clickModule.trigger();
+        // customText.trigger();
         timerModule.trigger();
-        randomSound.trigger();
+        // randomSound.trigger();
     }
 }
