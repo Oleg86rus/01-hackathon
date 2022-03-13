@@ -7,7 +7,7 @@
 }
 
 body {
-    font-size: 15px;
+    font-size: 17px;
     font-family: 'Roboto', sans-serif;
     height: 100vh;
     width: 100%;
@@ -44,9 +44,9 @@ body {
 
 .modalItem {
     text-align: center;
-    margin: 100px;
-    width: 600px;
-    height: 600px;
+    margin-left: 100px;
+    width: 511px;
+    height: 511px;
     background: #4ba7ef;
     border-radius: 20px;
 }
@@ -121,11 +121,11 @@ body {
 .startButton {
     width: 150px;
     height: 50px;
-    margin-top: 10px;
     background: #4bda9a;
     border-radius: 20px;
     border: none;
     box-shadow: 0 0 5px 2px #ff5900;
+    cursor: url("./assets/cursor.cur"), pointer;
 }
 
 .wizards {
@@ -189,7 +189,7 @@ body {
     object-fit: cover;
     top: 50%;
     transform: translate(0, -50%);
-    cursor: pointer;
+    cursor: url("./assets/cursor.cur"), pointer;
     transition: transform 0.3s;
 }
 

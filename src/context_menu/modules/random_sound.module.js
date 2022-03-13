@@ -10,18 +10,15 @@ export class RandomSound extends Module {
         return super.toHTML();
     }
     trigger() {
-        return new Promise(() => {
-            const soundModule = document.querySelector("[data-type = 'randomSound']");
-            soundModule.addEventListener('click', () => {
-                const sound = document.querySelector('.sound')
-                if(sound) {
-                    sound.remove()
-                    this.createElement()
-                } else {
-                    this.createElement()
-                }
-
-            })
+        const soundModule = document.querySelector("[data-type = 'randomSound']");
+        soundModule.addEventListener('click', () => {
+            const sound = document.querySelector('.sound')
+            if(sound) {
+                sound.remove()
+                this.createElement()
+            } else {
+                this.createElement()
+            }
 
         })
     }

@@ -1,4 +1,4 @@
-import { Module } from '../../core/module';
+import { Module } from '@/core/module';
 
 export class TimerModule extends Module {
     constructor(type, text) {
@@ -9,28 +9,26 @@ export class TimerModule extends Module {
         return super.toHTML();
     }
     trigger() {
-        return new Promise(() => {
-            let time;
-            const menuTimer = document.querySelector("[data-type = 'timer']");
-            menuTimer.addEventListener('click', () => {
-                time = this.getTime();
-                console.log(time);
+        let time;
+        const menuTimer = document.querySelector("[data-type = 'timer']");
+        menuTimer.addEventListener('click', () => {
+            time = this.getTime();
+            console.log(time);
 
-                // Создание блока времени отсчета
-                const timeCount = document.createElement('div');
-                timeCount.textContent = `До завершения таймера осталось ${time} сек`;
-                document.body.appendChild(timeCount);
+            // Создание блока времени отсчета
+            const timeCount = document.createElement('div');
+            timeCount.textContent = `До завершения таймера осталось ${time} сек`;
+            document.body.appendChild(timeCount);
 
-                // Таймер отсчета используя декремент (--) с шагом в 1000 мс
-                setInterval(() => {
-                    timeCount.textContent = `До завершения таймера осталось ${--time} сек`;
-                }, 1000);
+            // Таймер отсчета используя декремент (--) с шагом в 1000 мс
+            setInterval(() => {
+                timeCount.textContent = `До завершения таймера осталось ${--time} сек`;
+            }, 1000);
 
-                // Удаление таймера и вывод сообщения об окончании
-                setTimeout(() => {
-                    document.body.removeChild(timeCount);
-                }, time * 1000);
-            });
+            // Удаление таймера и вывод сообщения об окончании
+            setTimeout(() => {
+                document.body.removeChild(timeCount);
+            }, time * 1000);
         });
     }
 

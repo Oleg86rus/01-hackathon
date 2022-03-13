@@ -23,6 +23,10 @@ export class ContextMenu extends Menu {
     open(event) {
         const contextMenu = document.querySelector('#menu');
         document.body.addEventListener('contextmenu', event => {
+            const wizards = document.querySelector('.wizards');
+            if (wizards) {
+                wizards.remove();
+            }
             event.preventDefault();
             contextMenu.classList.add('open');
             contextMenu.style.top = `${event.clientY}px`;
@@ -49,7 +53,7 @@ export class ContextMenu extends Menu {
             timerModule,
             randomSound,
             wizardModule
-        ]
+        ];
 
         contextMenuItems.forEach((el) => {
             contextMenu.insertAdjacentHTML('beforeend', el.toHTML());

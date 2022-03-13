@@ -10,17 +10,15 @@ export class WizardModule extends Module {
     }
 
     trigger() {
-        return new Promise(() => {
-            const soundModule = document.querySelector("[data-type = 'wizardModule']");
-            soundModule.addEventListener('click', () => {
-                const wizard = document.querySelector('.wizards')
-                if(wizard) {
-                    wizard.remove()
-                    this.createElement()
-                } else {
-                    this.createElement()
-                }
-            })
+        const soundModule = document.querySelector("[data-type = 'wizardModule']");
+        soundModule.addEventListener('click', () => {
+            const wizard = document.querySelector('.wizards')
+            if(wizard) {
+                wizard.remove()
+                this.createElement()
+            } else {
+                this.createElement()
+            }
         })
     }
 

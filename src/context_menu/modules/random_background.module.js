@@ -9,12 +9,10 @@ export class RandomBackgroundModule extends Module {
         return super.toHTML();
     }
     trigger() {
-       return new Promise(() => {
-           const menuList = document.querySelector("[data-type = 'randomBackground']");
-           menuList.addEventListener('click', () => {
-               document.body.style.background = `RGB(${UTILS.random(0, 255)}, ${UTILS.random(0, 255)}, ${UTILS.random(0, 255)})`;
-               document.body.style.transition = 'background 1s ease';
-           })
+       const menuList = document.querySelector("[data-type = 'randomBackground']");
+       menuList.addEventListener('click', () => {
+           document.body.style.background = `RGB(${UTILS.random(0, 255)}, ${UTILS.random(0, 255)}, ${UTILS.random(0, 255)})`;
+           document.body.style.transition = 'background 1s ease';
        })
     }
 }

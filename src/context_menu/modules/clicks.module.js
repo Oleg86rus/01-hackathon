@@ -13,26 +13,24 @@ export class ClicksModule extends Module {
     }
 
     trigger() {
-        return new Promise(() => {
-            const clickModalItem = document.querySelector("[data-type = 'clickModule']");
-            clickModalItem.addEventListener('click', (event) => {
-                event.preventDefault()
-                const modals = document.querySelectorAll('.modalItem');
-                this.time = 10;
-                this.clickCounter = 0;
-                this.dblClickCounter = 0;
-                if (modals) {
-                    modals.forEach((el) => {
-                        el.remove();
-                    })
+        const clickModalItem = document.querySelector("[data-type = 'clickModule']");
+        clickModalItem.addEventListener('click', (event) => {
+            event.preventDefault()
+            const modals = document.querySelectorAll('.modalItem');
+            this.time = 10;
+            this.clickCounter = 0;
+            this.dblClickCounter = 0;
+            if (modals) {
+                modals.forEach((el) => {
+                    el.remove();
+                })
 
-                    this.render(`Анализ кликов за 10 секунд.\n`);
-                    this.startButton();
-                } else {
-                    this.render(`Анализ кликов за 10 секунд.\n`);
-                    this.startButton();
-                }
-            })
+                this.render(`Анализ кликов за 10 секунд.\n`);
+                this.startButton();
+            } else {
+                this.render(`Анализ кликов за 10 секунд.\n`);
+                this.startButton();
+            }
         })
     }
 
@@ -45,14 +43,14 @@ export class ClicksModule extends Module {
     }
 
     counter () {
-            this.startTimerForRemoveModal();
-            const modal = document.querySelector('.modalItem');
-            modal.addEventListener('click', () => {
-                this.time === 0 ? this.clickCounter : this.clickCounter++;
-            })
-            modal.addEventListener('dblclick', () => {
-                this.time === 0 ? this.dblClickCounter : this.dblClickCounter++;
-            })
+        this.startTimerForRemoveModal();
+        const modal = document.querySelector('.modalItem');
+        modal.addEventListener('click', () => {
+            this.time === 0 ? this.clickCounter : this.clickCounter++;
+        })
+        modal.addEventListener('dblclick', () => {
+            this.time === 0 ? this.dblClickCounter : this.dblClickCounter++;
+        })
     }
 
     setTime (value) {
