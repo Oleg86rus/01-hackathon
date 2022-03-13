@@ -5,6 +5,7 @@ import { ShapeModule } from "@/context_menu/modules/shape.module";
 import { RandomSound } from "@/context_menu/modules/random_sound.module";
 import { TimerModule } from "@/context_menu/modules/timer.module";
 import { CustomText } from "@/context_menu/modules/custom_text.module";
+import { WizardModule } from "@/context_menu/modules/wizards.module";
 
 const shapeModule =  new ShapeModule('shapeModule', 'Случайная фигура');
 const changeBackground = new RandomBackgroundModule('randomBackground', 'Случайный фон');
@@ -12,6 +13,7 @@ const clickModule = new ClicksModule('clickModule', 'Аналитика клик
 const customText = new CustomText('customText', 'Кастомное сообщение');
 const timerModule = new TimerModule('timer', 'Таймер отчёта');
 const randomSound = new RandomSound('randomSound', 'Случайный звук');
+const wizardModule = new WizardModule('wizardModule', 'Битва магов');
 
 
 export class ContextMenu extends Menu {
@@ -21,6 +23,10 @@ export class ContextMenu extends Menu {
     open(event) {
         const contextMenu = document.querySelector('#menu');
         document.body.addEventListener('contextmenu', event => {
+            const wizards = document.querySelector('.wizards');
+            if (wizards) {
+                wizards.remove();
+            }
             event.preventDefault();
             contextMenu.classList.add('open');
             contextMenu.style.top = `${event.clientY}px`;
@@ -45,8 +51,9 @@ export class ContextMenu extends Menu {
             shapeModule,
             customText,
             timerModule,
-            randomSound
-        ]
+            randomSound,
+            wizardModule
+        ];
 
         contextMenuItems.forEach((el) => {
             contextMenu.insertAdjacentHTML('beforeend', el.toHTML());
@@ -59,5 +66,6 @@ export class ContextMenu extends Menu {
         customText.trigger();
         timerModule.trigger();
         randomSound.trigger();
+        wizardModule.trigger();
     }
 }

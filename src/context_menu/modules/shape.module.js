@@ -9,22 +9,20 @@ export class ShapeModule extends Module {
         return super.toHTML();
     }
     trigger() {
-        return new Promise(() => {
-            const shapeModule = document.querySelector("[data-type = 'shapeModule']");
-            shapeModule.addEventListener('click', () => {
-                const shape = document.querySelectorAll('.shape')
-                    if(shape) {
-                        shape.forEach(item => {
-                            item.style.opacity = '0'
-                            setTimeout(()=> {
-                                item.remove()
-                            }, 500)
-                        })
-                        this.createElement()
-                    } else {
-                        this.createElement()
-                    }
-            })
+        const shapeModule = document.querySelector("[data-type = 'shapeModule']");
+        shapeModule.addEventListener('click', () => {
+            const shape = document.querySelectorAll('.shape')
+                if(shape) {
+                    shape.forEach(item => {
+                        item.style.opacity = '0'
+                        setTimeout(()=> {
+                            item.remove()
+                        }, 500)
+                    })
+                    this.createElement()
+                } else {
+                    this.createElement()
+                }
         })
     }
     createElement() {
